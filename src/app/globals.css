@@ -1,26 +1,138 @@
 @import "tailwindcss";
+@config "../../tailwind.config.mjs";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Base Font Setup */
+  --font-sans: var(sans-serif, --font-geist-sans, Arial, Helvetica);
+  --font-mono: var(--font-geist-mono, monospace);
+
+  /* === Primary HSL Color === */
+  --primary-h: 170; /* Greenish tone */
+  --primary-s: 59%;  /* Good saturation */
+  --primary-l: 39%;  /* Balanced lightness */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+body, header, section{
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html.light {
+  --background: hsl(0, 0%, 100%);        /* White background */
+  --foreground: hsl(0, 0%, 10%);         /* Dark text for contrast */
+  --primary: hsl(var(--primary-h), var(--primary-s), var(--primary-l)); /* Primary color */
+  --primary-hover: hsl(var(--primary-h), var(--primary-s), calc(var(--primary-l) + 12%)); /* Slightly lighter for hover */
+  --accent: hsl(var(--primary-h), 80%, 70%); /* Softer accent */
+  --muted: hsl(var(--primary-h), 30%, 94%); /* Light, muted color */
+  --neutral: hsl(0, 0%, 97%);             /* Lighter neutral background for subtle details */
+
+  --bg-background-1: hsl(var(--primary-h), 20%, 94%);
+  --bg-background-2: hsl(var(--primary-h), 30%, 89%);
+  --bg-background-3: hsl(var(--primary-h), 15%, 85%);
 }
+
+html.dark {
+  --background: hsl(0, 0%, 6%);          /* Dark background */
+  --foreground: hsl(0, 0%, 90%);         /* Light text for contrast */
+  --primary: hsl(var(--primary-h), var(--primary-s), calc(var(--primary-l) * 0.75)); /* Darker primary color */
+  --primary-hover: hsl(var(--primary-h), var(--primary-s), calc(var(--primary-l) * 0.85)); /* Slightly lighter for hover */
+  --accent: hsl(var(--primary-h), 80%, 50%); /* Deeper accent for dark theme */
+  --muted: hsl(var(--primary-h), 25%, 20%); /* Muted tones for dark mode */
+  --neutral: hsl(0, 0%, 15%);            /* Dark neutral for subtle details */
+
+  --bg-background-1: hsl(var(--primary-h), 15%, 8%);
+  --bg-background-2: hsl(var(--primary-h), 18%, 12%);
+  --bg-background-3: hsl(var(--primary-h), 14%, 10%);
+}
+
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+@layer base{
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+}
+
+.bg-primary {
+  background-color: var(--primary);
+}
+.bg-primary-hover {
+  background-color: var(--primary-hover);
+}
+.bg-accent {
+  background-color: var(--accent);
+}
+.bg-muted {
+  background-color: var(--muted);
+}
+.bg-neutral {
+  background-color: var(--neutral);
+}
+.bg-background {
+  background-color: var(--background);
+}
+
+.bg-background-1 {
+  background-color: var(--bg-background-1);
+}
+
+.bg-background-2 {
+  background-color: var(--bg-background-2);
+}
+
+.bg-background-3 {
+  background-color: var(--bg-background-3);
+}
+
+.bg-foreground {
+  background-color: var(--foreground);
+}
+
+.text-primary {
+  color: var(--primary);
+}
+.text-primary-hover {
+  color: var(--primary-hover);
+}
+.text-accent {
+  color: var(--accent);
+}
+.text-muted {
+  color: var(--muted);
+}
+.text-neutral {
+  color: var(--neutral);
+}
+.text-foreground {
+  color: var(--foreground);
+}
+
+.border-primary {
+  border-color: var(--primary);
+}
+.border-accent {
+  border-color: var(--accent);
+}
+.border-muted {
+  border-color: var(--muted);
+}
+.border-neutral {
+  border-color: var(--neutral);
+}
+.border-foreground {
+  border-color: var(--foreground);
+}
+
+.font-sans-serif{
+  font-family: var(--font-sans);
+}
+
+.font-mono{
+  font-family: var(--font-mono);
 }
