@@ -155,3 +155,35 @@ body {
 .animate-moveGrid {
   animation: moveGrid 20s linear infinite;
 }
+
+.vibrancy-wrapper {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+  /* transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2); */
+}
+.vibrancy-effect {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  backdrop-filter: blur(1px);
+  filter: url(#glass-distortion);
+  overflow: hidden;
+  isolation: isolate;
+}
+.vibrancy-tint {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.01);
+}
+.vibrancy-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+}
+.vibrancy-text {
+  z-index: 3;
+}
