@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import Template from "../components/public/template";
+import Background from "../components/public/background";
+import Providers from "../providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,11 +30,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Template>
-          <div className="overflow-auto scrollbar-hide">
-            {children}
-          </div>
-        </Template>
+        <div className="relative h-screen w-screen overflow-hidden">
+          <Providers>
+            <Background>
+              <Template>
+                {children}
+              </Template>
+            </Background>
+          </Providers>
+        </div>
       </body>
     </html>
   );

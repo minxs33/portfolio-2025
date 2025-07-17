@@ -6,10 +6,9 @@
   --font-sans: var(sans-serif, --font-geist-sans, Arial, Helvetica);
   --font-mono: var(--font-geist-mono, monospace);
 
-  /* === Primary HSL Color === */
-  --primary-h: 170; /* Greenish tone */
-  --primary-s: 59%;  /* Good saturation */
-  --primary-l: 39%;  /* Balanced lightness */
+  --primary-h: 220;   /* Deep Blue hue */
+  --primary-s: 60%;   /* Vivid but not neon */
+  --primary-l: 45%;   /* Mid lightness for flexibility */
 }
 
 body, header, section{
@@ -135,4 +134,24 @@ body {
 
 .font-mono{
   font-family: var(--font-mono);
+}
+
+.bg-grid {
+  background-size: 20vw 20vw;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.1) 2px, transparent 3px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 2px, transparent 3px);
+}
+
+@keyframes moveGrid {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 20vw 20vw;
+  }
+}
+
+.animate-moveGrid {
+  animation: moveGrid 20s linear infinite;
 }
