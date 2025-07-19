@@ -6,6 +6,8 @@ import Link from "next/link"
 import { RootState } from "@/app/state/store"
 import { motion, AnimatePresence } from "framer-motion"
 import { useEffect, useState } from "react"
+import Vibrancy from "./vibrancy"
+import SwitchThemes from "./switchTheme"
 
 export default function Navigation() {
   const dispatch = useDispatch()
@@ -18,28 +20,32 @@ export default function Navigation() {
     { id: "projects", label: "Projects", href: "#projects" },
     { id: "contact", label: "Contact", href: "#contact" },
   ]
-
+  
   return (
     <>
     {/* hamburgir */}
+    <div className="flex items-center justify-between gap-2 absolute top-5 right-5">
+      <SwitchThemes />
       <motion.button 
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.90 }}
-        className="group size-12 absolute top-5 right-5 md:right-10 z-50 cursor-pointer"
+        className="relative group size-12 z-50 cursor-pointer"
         onClick={() => dispatch(toggleNav())}
       >
         {isOpen ? (
           <>
-            <span className="inline-block w-3/5 h-0.5 bg-white rounded-full absolute left-1/2 -translate-x-1/2 top-1/2 duration-300 rotate-45 -translate-y-1/2 md:group-hover:rotate-28"></span>
-            <span className="inline-block w-3/5 h-0.5 bg-white rounded-full absolute left-1/2 -translate-x-1/2 top-1/2 duration-300 -rotate-45 -translate-y-1/2 md:group-hover:-rotate-28"></span>
+            <span className="absolute inline-block w-3/5 h-0.5 bg-foreground rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45 duration-300 md:group-hover:rotate-28"></span>
+            <span className="absolute inline-block w-3/5 h-0.5 bg-foreground rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-45 duration-300 md:group-hover:-rotate-28"></span>
           </>
         ) : (
           <>
-            <span className="inline-block w-3/5 h-0.5 bg-gray-200 rounded-full absolute left-1/2 -translate-x-1/2 top-1/2 duration-300 -translate-y-[5px] md:group-hover:rotate-12"></span>
-            <span className="inline-block w-3/5 h-0.5 bg-gray-200 rounded-full absolute left-1/2 -translate-x-1/2 top-1/2 duration-300 translate-y-[5px] md:group-hover:-rotate-12"></span>
+            <span className="absolute inline-block w-3/5 h-0.5 bg-foreground rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-[5px] duration-300 md:group-hover:rotate-12"></span>
+            <span className="absolute inline-block w-3/5 h-0.5 bg-foreground rounded-full left-1/2 top-1/2 -translate-x-1/2 translate-y-[5px] duration-300 md:group-hover:-rotate-12"></span>
           </>
         )}
       </motion.button>
+    </div>
+
 
       {/* overlay for close nav panel*/}
       <div
@@ -56,12 +62,9 @@ export default function Navigation() {
           animate={{ scaleX: isOpen ? 1 : 0 }}
           transition={{ duration: 0.3, ease: 'easeInOut', delayChildren:0}}
           style={{ originX: 1 }}
-          className="absolute inset-0 vibrancy-wrapper z-1 h-full"
+          className="absolute inset-0 z-1"
         >
-          <div className="vibrancy-effect" />
-          <div className="vibrancy-tint" />
-          <div className="vibrancy-shine" />
-          <div className="vibrancy-text">
+          <Vibrancy wrapperClass="h-full">
             {/* Nav Items */}
             <AnimatePresence>
               {isOpen && (
@@ -104,7 +107,7 @@ export default function Navigation() {
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
+          </Vibrancy>
         </motion.div>
       </div>
     </>

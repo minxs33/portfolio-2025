@@ -16,8 +16,16 @@ body, header, section{
 }
 
 html.light {
-  --background: hsl(0, 0%, 100%);        /* White background */
-  --foreground: hsl(0, 0%, 10%);         /* Dark text for contrast */
+  --background-h: 0;
+  --background-s: 0%;
+  --background-l: 100%;
+  --foreground-h: 0;
+  --foreground-s: 0%;
+  --foreground-l: 10%;
+
+  --background: hsl(var(--background-h), var(--background-s), var(--background-l));
+  --foreground: hsl(var(--foreground-h), var(--foreground-s), var(--foreground-l));
+
   --primary: hsl(var(--primary-h), var(--primary-s), var(--primary-l)); /* Primary color */
   --primary-hover: hsl(var(--primary-h), var(--primary-s), calc(var(--primary-l) + 12%)); /* Slightly lighter for hover */
   --accent: hsl(var(--primary-h), 80%, 70%); /* Softer accent */
@@ -30,8 +38,15 @@ html.light {
 }
 
 html.dark {
-  --background: hsl(0, 0%, 6%);          /* Dark background */
-  --foreground: hsl(0, 0%, 90%);         /* Light text for contrast */
+  --background-h: 0;
+  --background-s: 0%;
+  --background-l: 6%;
+  --foreground-h: 0;
+  --foreground-s: 0%;
+  --foreground-l: 90%;
+
+  --background: hsl(var(--background-h), var(--background-s), var(--background-l));
+  --foreground: hsl(var(--foreground-h), var(--foreground-s), var(--foreground-l));
   --primary: hsl(var(--primary-h), var(--primary-s), calc(var(--primary-l) * 0.75)); /* Darker primary color */
   --primary-hover: hsl(var(--primary-h), var(--primary-s), calc(var(--primary-l) * 0.85)); /* Slightly lighter for hover */
   --accent: hsl(var(--primary-h), 80%, 50%); /* Deeper accent for dark theme */
@@ -139,8 +154,8 @@ body {
 .bg-grid {
   background-size: 20vw 20vw;
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.1) 2px, transparent 3px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 2px, transparent 3px);
+    linear-gradient(to right, hsla(var(--foreground-h), var(--foreground-s), var(--foreground-l), 0.1) 2px, transparent 3px),
+    linear-gradient(to bottom, hsla(var(--foreground-h), var(--foreground-s), var(--foreground-l), 0.1) 2px, transparent 3px);
 }
 
 @keyframes moveGrid {
@@ -176,14 +191,17 @@ body {
   z-index: 1;
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.01);
+  background: hsla(var(--foreground-h), var(--foreground-s), var(--foreground-l), 0.05);
 }
 .vibrancy-shine {
   position: absolute;
   inset: 0;
   z-index: 2;
   overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+  box-shadow: inset 2px 2px 1px 0 hsla(var(--background-h), var(--background-s), var(--background-l), 0.5),
+  inset -1px -1px 1px 1px hsla(var(--background-h), var(--background-s), var(--background-l), 0.5);
 }
-.vibrancy-text {
+.vibrancy-content {
   z-index: 3;
 }
