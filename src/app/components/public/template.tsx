@@ -6,10 +6,14 @@ import { store } from "../../state/store";
 
 export default function Template({ children }: { children: React.ReactNode }) {
     return (
-        <Provider store={store}>
-            <Navigation />
-                {children}
-            <Footer />
-        </Provider>
+        <>
+            <div className="absolute inset-0 bg-grid animate-moveGrid z-0" />
+            <Provider store={store}>
+                <Navigation />
+                    {children}
+                <Footer />
+            </Provider>
+            
+        </>
     )
 }

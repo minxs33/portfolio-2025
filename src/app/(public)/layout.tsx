@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import Template from "../components/public/template";
-import Background from "../components/public/background";
 import Providers from "../providers";
 
 const geistSans = Geist({
@@ -82,11 +81,9 @@ export default function RootLayout({
             </filter>
           </svg>
           <Providers>
-            <Background>
               <Template>
                 {children}
               </Template>
-            </Background>
           </Providers>
         </div>
       </body>
