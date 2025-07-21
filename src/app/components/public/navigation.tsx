@@ -29,7 +29,7 @@ export default function Navigation() {
       <motion.button 
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.90 }}
-        className="relative group size-12 z-50 cursor-pointer"
+        className="relative group size-12 z-20 cursor-pointer"
         onClick={() => dispatch(toggleNav())}
       >
         {isOpen ? (
@@ -56,13 +56,13 @@ export default function Navigation() {
       />
 
       {/* nav panel */}
-      <div className="fixed inset-y-0 right-0 z-1 w-[80vw] sm:w-[50vw] md:w-[30vw] overflow-hidden">
+      <div className="fixed inset-y-0 right-0 z-10 w-[80vw] sm:w-[50vw] md:w-[30vw] overflow-hidden">
         <motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: isOpen ? 1 : 0 }}
           transition={{ duration: 0.3, ease: 'easeInOut', delayChildren:0}}
           style={{ originX: 1 }}
-          className="absolute inset-0 z-1"
+          className="absolute inset-0"
         >
           <Vibrancy wrapperClass="h-full">
             {/* Nav Items */}
@@ -74,7 +74,7 @@ export default function Navigation() {
                   animate={{ scaleX: 1 }}
                   exit={{ scaleX: 0 }}
                   transition={{ duration: 0.3, ease: 'easeInOut', delayChildren: 0.3 }}
-                  className="relative h-full w-full origin-right z-1"
+                  className="relative h-full w-full origin-right"
                 >
                   <div className="px-16 py-32 space-y-4 text-gray-500">
                     {navItems.map((item, index) => (

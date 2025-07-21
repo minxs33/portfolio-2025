@@ -29,7 +29,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="relative h-screen w-screen overflow-hidden">
           <svg style={{ display: 'none' }}>
             <filter
               id="glass-distortion"
@@ -85,7 +84,6 @@ export default function RootLayout({
                 {children}
               </Template>
           </Providers>
-        </div>
       </body>
     </html>
   );

@@ -153,6 +153,7 @@ body {
 
 .bg-grid {
   background-size: 20vw 20vw;
+  background-repeat: repeat;
   background-image:
     linear-gradient(to right, hsla(var(--foreground-h), var(--foreground-s), var(--foreground-l), 0.1) 2px, transparent 3px),
     linear-gradient(to bottom, hsla(var(--foreground-h), var(--foreground-s), var(--foreground-l), 0.1) 2px, transparent 3px);
