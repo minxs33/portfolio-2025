@@ -6,7 +6,7 @@ import Link from "next/link"
 import { RootState } from "@/app/state/store"
 import { motion, AnimatePresence } from "framer-motion"
 import { useEffect, useState } from "react"
-import Vibrancy from "./vibrancy"
+import Vibrancy from "./Vibrancy/Vibrancy"
 import SwitchThemes from "./switchTheme"
 
 export default function Navigation() {

@@ -1,5 +1,5 @@
 import Layout from "../components/public/template";
-import Vibrancy from "../components/public/vibrancy";
+import Vibrancy from "../components/public/Vibrancy/Vibrancy";
 
 export default function Home() {
   return (
