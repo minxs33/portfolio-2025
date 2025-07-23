@@ -95,6 +95,7 @@ export default function Vibrancy({children, wrapperClass}: {children?: React.Rea
             mode="overlay" 
             result="litImage" 
           />
+          <feFlood floodColor="#00aaff" floodOpacity="0.4" result="glowColor" />
           <feOffset in="softMap" dx="5" dy="5" result="offsetMap" />
           <feComposite
             in="softMap"
@@ -134,6 +135,15 @@ export default function Vibrancy({children, wrapperClass}: {children?: React.Rea
         />
         <div className={styles.tint} />
         <div className={styles.shine} />
+        {/* TODO: make dynamic colors based on props */}
+        <div 
+          className={styles.bottomGlow} 
+          style={{
+            boxShadow: `
+              inset 0 -30px 20px -60px #00aaff50,
+              inset 0 -60px 120px -30px #00aaff20
+            `
+          }} />
         <div className={styles.content}>{children}</div>
       </div>
     </>

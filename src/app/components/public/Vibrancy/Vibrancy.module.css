@@ -29,13 +29,21 @@
   z-index: 2;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
-  border-radius: 8px;
+  border-radius: 16px;
   backdrop-filter: blur(2px);
   box-shadow:
-    inset 2px 2px 1px 0 hsla(var(--foreground-h), var(--foreground-s), var(--foreground-l), 0.05),
-    inset -1px -1px 1px 1px hsla(var(--foreground-h), var(--foreground-s), var(--foreground-l), 0.05);
+    inset 4px 2px 3px 0 hsla(0, 0%, 100%, 0.1),
+    inset 1px -2px 5px 1px hsla(0, 0%, 100%, 0.1);
 }
 
+.bottomGlow {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: 16px;
+  filter: blur(1px);
+}
 .content {
   z-index: 3;
 }
+

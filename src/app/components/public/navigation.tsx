@@ -56,7 +56,7 @@ export default function Navigation() {
       />
 
       {/* nav panel */}
-      <div className="fixed inset-y-0 right-0 z-10 w-[80vw] sm:w-[50vw] md:w-[30vw] overflow-hidden">
+      <div className="fixed inset-y-0 right-0 -z-10 w-[80vw] sm:w-[50vw] md:w-[30vw] overflow-hidden">
         <motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: isOpen ? 1 : 0 }}
