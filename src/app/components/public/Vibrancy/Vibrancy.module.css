@@ -3,6 +3,7 @@
   display: flex;
   overflow: hidden;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.05), 0 0 20px rgba(0, 0, 0, 0.05);
+  
 }
 
 .effect {
@@ -28,9 +29,11 @@
   z-index: 2;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
-  /* box-shadow:
+  border-radius: 8px;
+  backdrop-filter: blur(2px);
+  box-shadow:
     inset 2px 2px 1px 0 hsla(var(--foreground-h), var(--foreground-s), var(--foreground-l), 0.05),
-    inset -1px -1px 1px 1px hsla(var(--foreground-h), var(--foreground-s), var(--foreground-l), 0.05); */
+    inset -1px -1px 1px 1px hsla(var(--foreground-h), var(--foreground-s), var(--foreground-l), 0.05);
 }
 
 .content {

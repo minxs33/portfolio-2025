@@ -89,14 +89,11 @@ export default function Vibrancy({children, wrapperClass}: {children?: React.Rea
           >
             <fePointLight x="-200" y="-200" z="300" />
           </feSpecularLighting>
-          <feComposite
-            in="highlightedEdges"
-            operator="arithmetic"
-            k1="0"
-            k2="1"
-            k3="1"
-            k4="0"
-            result="litImage"
+          <feBlend 
+            in="highlightedEdges" 
+            in2="specLight" 
+            mode="overlay" 
+            result="litImage" 
           />
           <feOffset in="softMap" dx="5" dy="5" result="offsetMap" />
           <feComposite
