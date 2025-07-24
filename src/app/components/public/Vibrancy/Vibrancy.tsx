@@ -1,11 +1,13 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
 import styles from './Vibrancy.module.css'
+import { GlowColor, tailwindColors } from './Types'
 
-export default function Vibrancy({children, wrapperClass}: {children?: React.ReactNode, wrapperClass?: string}){
+export default function Vibrancy({children, wrapperClass, glowColor}: {children?: React.ReactNode, wrapperClass?: string, glowColor?: GlowColor}) {
   const [seed, setSeed] = useState<number | null>(null)
   const [freq, setFreq] = useState<number | null>(null)
   const [transform, setTransform] = useState<string>('perspective(800px) rotateX(0deg) rotateY(0deg)')
+  const color = tailwindColors[glowColor as GlowColor] ?? '255 255 255'
 
   const wrapperRef = useRef<HTMLDivElement>(null)
 
@@ -13,6 +15,8 @@ export default function Vibrancy({children, wrapperClass}: {children?: React.Rea
     setSeed(Math.floor(Math.random() * 10000))
     setFreq(0.01 + Math.random() * (0.02 - 0.01))
   }, [])
+
+  if (seed === null || freq === null) return null
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const rect = wrapperRef.current?.getBoundingClientRect()
@@ -42,8 +46,6 @@ export default function Vibrancy({children, wrapperClass}: {children?: React.Rea
   const handleMouseLeave = () => {
     setTransform('perspective(800px) rotateX(0deg) rotateY(0deg)')
   }
-
-  if (seed === null || freq === null) return null
 
   return (
     <>
@@ -134,14 +136,21 @@ export default function Vibrancy({children, wrapperClass}: {children?: React.Rea
           }}
         />
         <div className={styles.tint} />
-        <div className={styles.shine} />
-        {/* TODO: make dynamic colors based on props */}
+        <div 
+          className={styles.shine} 
+          style={{
+            boxShadow: `
+              inset 4px 2px 3px 0 rgb(${color} / 0.1),
+              inset 1px -2px 5px 1px rgb(${color} / 0.1)
+            `
+          }}
+        />
         <div 
           className={styles.bottomGlow} 
           style={{
             boxShadow: `
-              inset 0 -30px 20px -60px #00aaff50,
-              inset 0 -60px 120px -30px #00aaff20
+              inset 0 -20px 20px -20px rgb(${color} / 0.5),
+              inset 0 0px 0px 1px rgb(${color} / 0.2)
             `
           }} />
         <div className={styles.content}>{children}</div>
